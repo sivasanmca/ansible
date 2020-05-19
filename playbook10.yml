@@ -1,0 +1,27 @@
+---
+- name: upload docker images in docker hub
+  hosts: all
+  tasks:
+    - name: enter the docker hub login
+      docker_login:
+              username: sivasanmca
+              password: 
+- name: push a customised docker image from server1                      
+  hosts: 172.31.92.186
+  tasks:
+    - name: push customised centos image
+      docker_image:
+              name: sivasanmca/centos_may
+              push: yes
+- name: push a customised docker image from server2
+  hosts: 172.31.88.25
+  tasks:
+    - name: push customised ubuntu image
+      docker_image:
+              name: sivasanmca/ubuntu_may
+              push: yes
+...              
+
+
+
+            

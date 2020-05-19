@@ -1,0 +1,17 @@
+---
+- name: create a centos container with mount volume
+  hosts: all
+  tasks:
+    - name: start a centos container
+      docker_container:
+              image: centos
+              name: mycentos
+              interactive: yes
+              tty: yes
+              volumes: 
+                - /data
+...                  
+
+
+
+

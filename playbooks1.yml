@@ -1,0 +1,12 @@
+---
+- name: Install a software
+  hosts: all
+  tasks:
+     - name: install a tree software
+       apt:
+               name: tree
+               state: present
+               update_cache: yes
+...
+
+

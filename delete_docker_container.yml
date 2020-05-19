@@ -1,0 +1,14 @@
+---
+- name: delete the docker container
+  docker_container:
+          name: "{{item}}"
+          state: absent         
+  with_items:
+          - mydb
+          - mywordpresss
+          - mydatabase
+          - myjenkins
+          - QAserver
+          - Prodserver
+...            
+

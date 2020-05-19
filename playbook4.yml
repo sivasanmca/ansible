@@ -1,0 +1,25 @@
+---
+- name: create and stop and delete the container
+  hosts: all
+  tasks: 
+     - name: create a container
+       docker_container:
+                image: tomcat
+                name: mytomcat
+     - name: stop the container
+       docker_container:
+               name: mytomcat
+               state: stopped
+     - name: remove the container
+       docker_container:
+               name: mytomcat
+               state: absent
+- name: remove the docker image
+  hosts: all
+  tasks:       
+     - name: remove the docker image
+       docker_image:
+            state: absent       
+            name: tomcat
+...               
+        

@@ -1,0 +1,13 @@
+---
+- name: delete the docker image and container using child playbook
+  hosts: all
+  tasks:
+      - name: using child playbooks
+        include: "{{item}}"
+        with_items:
+                - delete_docker_container.yml
+                - delete_docker_image.yml
+...                  
+             
+
+

@@ -1,0 +1,22 @@
+---
+- name: implementing for docker compose
+  hosts: all
+  tasks:
+     - name: start mysql container
+       docker_container:
+             image: mysql
+             name: mydb
+             env:
+               MYSQL_ROOT_PASSWORD: siva
+     - name: start the wordpress container
+       docker_container:
+               image: wordpress
+               name: mywordpresss
+               ports:
+                 - "9090:80"
+               links:
+                 - mydb:mysql       
+...                     
+
+          
+           

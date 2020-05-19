@@ -1,0 +1,10 @@
+---
+- name: delete the docker image
+  docker_image:
+          name: "{{item}}"
+          state: absent
+  with_items:
+          - mysql
+          - wordpress
+...            
+                  

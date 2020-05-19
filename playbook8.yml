@@ -1,0 +1,28 @@
+--- 
+- name: setup of jenkins and tomcat
+  hosts: all
+  tasks:
+          - name: installing jenkins server
+            docker_container:
+                    image: jenkins
+                    name: myjenkins
+                    ports:
+                       - "8989:8080"
+          - name: installing QAserver 
+            docker_container:
+                    image: tomcat
+                    name: QAserver
+                    ports:
+                       - "9090:8080"
+                    links:
+                       - myjenkins:jenkins     
+          - name: Installing Prodserver
+            docker_container:
+                    image: tomcat
+                    name: Prodserver
+                    ports:
+                       - "9999:8080"
+                    links:
+                       - myjenkins:jenkins
+...                           
+               

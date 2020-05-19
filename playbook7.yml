@@ -1,0 +1,29 @@
+---
+- name: pull the docker images
+  hosts: all
+  tasks:
+    - name: pull the docker images
+      docker_image:
+           name: "{{item}}"
+      with_items:
+              - mysql
+              - tomcat
+              - wordpress
+              - nginx      
+- name: delete the docker images
+  hosts: all
+  tasks: 
+     - name: delete the images
+       docker_image:
+               name: "{{item}}"
+               state: absent
+       with_items:
+               - mysql
+               - tomcat
+               - wordpress
+               - nginx
+               - jenkins
+
+...              
+
+
