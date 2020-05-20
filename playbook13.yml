@@ -1,0 +1,28 @@
+---
+- name: installing software
+  hosts: all
+  tasks:
+     - name: install a git
+       apt:
+          name: git
+          state: present
+          update_cache: yes
+- name: create a directory and copy file
+  hosts: all
+  tasks:
+     - name: create a directory
+       file: 
+          name: /tmp/dire1
+          state: directory
+     - name: create a file
+       file:
+          name: /tmp/dire1/file1
+          state: touch
+     - name: copy the /etc/password file
+       copy: 
+          src: /etc/passwd
+          dest: /tmp/dire1/file1
+...          
+         
+        
+

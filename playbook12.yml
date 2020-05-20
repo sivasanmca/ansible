@@ -1,0 +1,14 @@
+---
+- name: create 10 container using with_sequnce
+  hosts: all
+  tasks:
+     - name: start a ubuntu container
+       docker_container:
+               image: ubuntu
+               name: "myubuntu{{item}}"
+       with_sequence: count=10
+...       
+                   
+
+
+               

@@ -1,0 +1,27 @@
+---
+- name: create a multicontainer 
+  hosts: all
+  tasks: 
+     - name: start a sql container
+       docker_container:
+               image: mysql
+               name: mydb
+               env:
+                 MYSQL_ROOT_PASSWORD: siva
+     - name: start a tomcat container
+       docker_container:
+             image: tomcat
+             name: webserver
+             ports:
+               - "8989:8080"       
+             links:
+               - mydb:mysql    
+     - name: start a apache container
+       docker_container:
+              image: httpd
+              name: myapache
+              ports:
+                - "9090:80"
+              links:
+                - mydb:mysql       
+...                 
